@@ -1,3 +1,4 @@
+import Content from "components/Layout/Content";
 import Header from "components/Layout/Header";
 
 const Home = () => {
@@ -6,7 +7,9 @@ const Home = () => {
       <div className="background">
         <div className="container">
           <Header />
-          <p>test</p>
+          <Content>
+            <p>test</p>
+          </Content>
         </div>
       </div>
 
