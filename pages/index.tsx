@@ -1,12 +1,23 @@
-import Head from "next/head";
-import Image from "next/image";
-import type { NextPage } from "next";
-import styles from "../styles/Home.module.css";
+import TypeIt from "typeit";
+import styles from "styles/Home.module.css";
+import { useEffect } from "react";
 
-const Home: NextPage = () => {
+const Home = () => {
+  useEffect(() => {
+    const title = new (TypeIt as any)("#myElement", {
+      strings: ["my-typeit-test"],
+    });
+
+    return () => {
+      title.go();
+    };
+  }, []);
+
   return (
     <div className={styles.container}>
-      <main className={styles.main}>my-history</main>
+      <main className={styles.main}>
+        <h1 id="myElement"></h1>
+      </main>
     </div>
   );
 };
