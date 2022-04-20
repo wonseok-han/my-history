@@ -1,24 +1,39 @@
-import TypeIt from "typeit";
-import styles from "styles/Home.module.css";
-import { useEffect } from "react";
+import Header from "components/Layout/Header";
 
 const Home = () => {
-  useEffect(() => {
-    const title = new (TypeIt as any)("#myElement", {
-      strings: ["my-typeit-test"],
-    });
-
-    return () => {
-      title.go();
-    };
-  }, []);
-
   return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 id="myElement"></h1>
-      </main>
-    </div>
+    <>
+      <div className="background">
+        <div className="container">
+          <Header />
+          <p>test</p>
+        </div>
+      </div>
+
+      <style>
+        {`
+        .background {
+          background-color: #2D333B;
+        }
+        .container {
+          min-height: 100vh;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-left: 4rem;
+          margin-right: 4rem;
+          padding: 1.5rem;
+          text-align: left;
+          color: inherit;
+          text-decoration: none;
+          border: 1px solid #eaeaea;
+          border-radius: 10px;
+          background-color: white;
+        }
+        `}
+      </style>
+    </>
   );
 };
 
