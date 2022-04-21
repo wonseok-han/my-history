@@ -1,7 +1,7 @@
 import React from "react";
 
 interface ContentProps {
-  children: React.ReactElement;
+  children: any;
 }
 
 const Content = ({ children }: ContentProps) => {

@@ -1,5 +1,11 @@
 import Content from "components/Layout/Content";
 import Header from "components/Layout/Header";
+import dynamic from "next/dynamic";
+import { getRandomColor } from "utils/randomColor";
+
+const Anime = dynamic(() => import("components/Anime"), {
+  ssr: false,
+});
 
 const Home = () => {
   return (
@@ -9,6 +15,20 @@ const Home = () => {
           <Header />
           <Content>
             <p>test</p>
+            <Anime
+              style={{
+                backgroundColor: getRandomColor(),
+                width: "50px",
+              }}
+              config={{
+                translateY: [0, 20],
+                scale: [0.8, 1],
+                loop: true,
+                duration: 1500,
+              }}
+            >
+              <div>Find</div>
+            </Anime>
           </Content>
         </div>
       </div>
