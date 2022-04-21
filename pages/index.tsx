@@ -14,24 +14,28 @@ const Home = () => {
         <div className="container">
           <Header />
           <Content>
-            <div className="flexContent">
-              <Anime
+            <Anime
+              style={{
+                height: "1000px",
+                textAlign: "left",
+                overflow: "auto",
+              }}
+              config={{
+                targets: "#vertical-bar",
+                height: "100%",
+                easing: "easeInOutQuad",
+                duration: 3000,
+              }}
+            >
+              <div
+                id="vertical-bar"
                 style={{
+                  width: "10px",
+                  height: "100px",
                   backgroundColor: getRandomColor(),
-                  width: "100px",
-                  height: "100%",
-                  textAlign: "left",
                 }}
-                config={{
-                  translateY: [0, 20],
-                  scale: [0.8, 1],
-                  loop: true,
-                  duration: 1500,
-                }}
-              >
-                <div>Find</div>
-              </Anime>
-            </div>
+              ></div>
+            </Anime>
           </Content>
         </div>
       </div>
@@ -43,8 +47,8 @@ const Home = () => {
           height: 100%;
         }
         .container {
-          min-height: 100vh;
-          // height: 100%;
+          // min-height: 100vh;
+          height: 100%;
           flex: 1;
           display: flex;
           flex-direction: column;
@@ -58,11 +62,6 @@ const Home = () => {
           border: 1px solid #eaeaea;
           border-radius: 10px;
           background-color: white;
-        }
-        .flexContent {
-          width: 100%;
-          display: flex;
-          justify-content: center;
         }
         `}
       </style>

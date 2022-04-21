@@ -9,6 +9,7 @@ interface TypeItProps {
   className?: string;
   style?: React.CSSProperties;
   JSXStyles?: string;
+  handleTypeItInstance?: (typeit: any) => void;
 }
 
 const TypeItAnime = ({
@@ -17,6 +18,7 @@ const TypeItAnime = ({
   className,
   style,
   JSXStyles,
+  handleTypeItInstance,
 }: TypeItProps) => {
   const [guid, setGuid] = useState("");
 
@@ -27,10 +29,12 @@ const TypeItAnime = ({
   useEffect(() => {
     if (!guid) return;
 
-    new (TypeIt as any)(`#${guid}`, {
+    const typeit = new (TypeIt as any)(`#${guid}`, {
       strings,
       ...options,
-    }).go();
+    });
+
+    handleTypeItInstance?.(typeit);
   }, [guid]);
 
   return (

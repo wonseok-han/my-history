@@ -9,17 +9,31 @@ const JSXStyles = `
 `;
 
 const Header = () => {
+  const handleTypeItInstance = (typeit: any) => {
+    typeit
+      .options({ speed: 100 })
+      .type("Hi, I'm wonseok-han")
+      .pause(300)
+      .options({ speed: 200 })
+      .delete("Hi, I'm wonseok-han".length)
+      .pause(100)
+      .options({ speed: 100 })
+      .type("This is My History")
+      .go();
+  };
+
   return (
     <>
       <TypeItAnime
         className="title"
-        strings={["My TypeIt Test"]}
         options={{
           afterStep: function (instance: any) {
             instance.getElement().style.color = getRandomColor();
           },
+          cursor: true,
         }}
         JSXStyles={JSXStyles}
+        handleTypeItInstance={handleTypeItInstance}
       />
     </>
   );
