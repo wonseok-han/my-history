@@ -7,8 +7,8 @@ interface TypeItProps {
   strings?: string | string[];
   options?: TypeItOptions;
   className?: string;
-  style?: any;
-  JSXStyles?: any;
+  style?: React.CSSProperties;
+  JSXStyles?: string;
 }
 
 const TypeItAnime = ({

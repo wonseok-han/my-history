@@ -14,21 +14,24 @@ const Home = () => {
         <div className="container">
           <Header />
           <Content>
-            <p>test</p>
-            <Anime
-              style={{
-                backgroundColor: getRandomColor(),
-                width: "50px",
-              }}
-              config={{
-                translateY: [0, 20],
-                scale: [0.8, 1],
-                loop: true,
-                duration: 1500,
-              }}
-            >
-              <div>Find</div>
-            </Anime>
+            <div className="flexContent">
+              <Anime
+                style={{
+                  backgroundColor: getRandomColor(),
+                  width: "100px",
+                  height: "100%",
+                  textAlign: "left",
+                }}
+                config={{
+                  translateY: [0, 20],
+                  scale: [0.8, 1],
+                  loop: true,
+                  duration: 1500,
+                }}
+              >
+                <div>Find</div>
+              </Anime>
+            </div>
           </Content>
         </div>
       </div>
@@ -37,9 +40,11 @@ const Home = () => {
         {`
         .background {
           background-color: #2D333B;
+          height: 100%;
         }
         .container {
           min-height: 100vh;
+          // height: 100%;
           flex: 1;
           display: flex;
           flex-direction: column;
@@ -53,6 +58,11 @@ const Home = () => {
           border: 1px solid #eaeaea;
           border-radius: 10px;
           background-color: white;
+        }
+        .flexContent {
+          width: 100%;
+          display: flex;
+          justify-content: center;
         }
         `}
       </style>

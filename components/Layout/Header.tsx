@@ -3,7 +3,7 @@ import { getRandomColor } from "utils/randomColor";
 
 const JSXStyles = `
   .title {
-    font-size: 5rem;
+    font-size: 3rem;
     font-weight: bold;
   }
 `;
