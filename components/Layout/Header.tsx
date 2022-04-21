@@ -31,6 +31,7 @@ const Header = () => {
             instance.getElement().style.color = getRandomColor();
           },
           cursor: true,
+          waitUntilVisible: true,
         }}
         JSXStyles={JSXStyles}
         handleTypeItInstance={handleTypeItInstance}
