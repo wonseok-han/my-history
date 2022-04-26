@@ -1,7 +1,7 @@
 import Content from "components/Layout/Content";
 import { HISTORY_DATA } from "historyData";
 import Header from "components/Layout/Header";
-import { anime } from "components/Anime";
+
 import dynamic from "next/dynamic";
 import { getRandomColor } from "utils/randomColor";
 import { makeGuid } from "utils/functions";
@@ -18,14 +18,7 @@ const Home = () => {
           <Header />
           <Content>
             <Anime
-              style={{
-                width: "100%",
-                height: "100%",
-                textAlign: "left",
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "2em",
-              }}
+              className="anime-container"
               config={{
                 targets: "#vertical-bar",
                 height: "100%",
@@ -38,7 +31,7 @@ const Home = () => {
                 style={{
                   left: "49.5%",
                   width: "10px",
-                  height: "100px",
+                  height: "0px",
                   backgroundColor: getRandomColor(),
                   position: "fixed",
                   borderRadius: "10px",
@@ -48,29 +41,22 @@ const Home = () => {
               <div>
                 {HISTORY_DATA.map((item, index) => {
                   const guid = makeGuid();
-                  const x = [-110, 15];
-                  const tansX = x[index % 2];
 
                   return (
-                    <div key={item.key} className="history-items">
+                    <>
                       <Anime
                         config={{
                           targets: `#${guid}`,
                           opacity: 1,
                           easing: "easeInOutQuad",
-                          delay: () => index * 300,
+                          delay: () => index * 500,
                         }}
                       >
                         <div
                           id={guid}
+                          className="history-box"
                           style={{
                             visibility: index % 2 === 0 ? "visible" : "hidden",
-                            opacity: 0,
-                            height: "100%",
-                            border: "2px solid black",
-                            marginBottom: "4rem",
-                            paddingLeft: "1rem",
-                            borderRadius: "10px",
                           }}
                         >
                           <p>{item.name}</p>
@@ -79,7 +65,7 @@ const Home = () => {
                           <p>{item.skill}</p>
                         </div>
                       </Anime>
-                    </div>
+                    </>
                   );
                 })}
               </div>
@@ -87,29 +73,22 @@ const Home = () => {
               <div>
                 {HISTORY_DATA.map((item, index) => {
                   const guid = makeGuid();
-                  const x = [-110, 15];
-                  const tansX = x[index % 2];
 
                   return (
-                    <div key={item.key} className="history-items">
+                    <>
                       <Anime
                         config={{
                           targets: `#${guid}`,
                           opacity: 1,
                           easing: "easeInOutQuad",
-                          delay: () => index * 300,
+                          delay: () => index * 500,
                         }}
                       >
                         <div
                           id={guid}
+                          className="history-box"
                           style={{
                             visibility: index % 2 !== 0 ? "visible" : "hidden",
-                            opacity: 0,
-                            height: "100%",
-                            border: "2px solid black",
-                            marginBottom: "4rem",
-                            paddingLeft: "1rem",
-                            borderRadius: "10px",
                           }}
                         >
                           <p>{item.name}</p>
@@ -118,7 +97,7 @@ const Home = () => {
                           <p>{item.skill}</p>
                         </div>
                       </Anime>
-                    </div>
+                    </>
                   );
                 })}
               </div>
@@ -135,7 +114,6 @@ const Home = () => {
           overflow: auto;
         }
         .container {
-          // min-height: 100vh;
           height: 100%;
           flex: 1;
           display: flex;
@@ -151,8 +129,21 @@ const Home = () => {
           border-radius: 10px;
           background-color: white;
         }
-        .history-items {
-          // width: 50%;
+        .anime-container {
+          width: 100%;
+          height: 100%;
+          text-align: left;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2em;
+        }
+        .history-box {
+          opacity: 0;
+          height: 100%;
+          border: 2px solid black;
+          margin-bottom: 4rem;
+          padding-left: 1rem;
+          border-radius: 10px;
         }
         `}
       </style>
