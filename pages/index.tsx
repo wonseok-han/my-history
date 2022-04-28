@@ -44,32 +44,6 @@ const Home = () => {
                   borderRadius: "10px",
                 }}
               />
-              <Anime
-                config={{
-                  targets: "#vertical-arrow",
-                  top: "98.5%",
-                  easing: "easeInOutQuad",
-                  duration: 3000,
-                }}
-                style={{
-                  position: "fixed",
-                  zIndex: 999,
-                }}
-              >
-                <div
-                  id="vertical-arrow"
-                  style={{
-                    top: "11%",
-                    left: "49.5%",
-                    height: "0px",
-                    position: "fixed",
-                    borderTop: `20px solid ${verticalColor}`,
-                    borderLeft: "5px solid transparent",
-                    borderRight: "5px solid transparent",
-                    zIndex: 999,
-                  }}
-                />
-              </Anime>
 
               <div>
                 {HISTORY_DATA.map((item, index) => {
