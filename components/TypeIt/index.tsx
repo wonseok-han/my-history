@@ -10,6 +10,7 @@ interface TypeItProps {
   style?: React.CSSProperties;
   JSXStyles?: string;
   handleTypeItInstance?: (typeit: any) => void;
+  onClick?: () => void;
 }
 
 const TypeItAnime = ({
@@ -19,6 +20,7 @@ const TypeItAnime = ({
   style,
   JSXStyles,
   handleTypeItInstance,
+  onClick,
 }: TypeItProps) => {
   const [guid, setGuid] = useState("");
 
@@ -39,7 +41,14 @@ const TypeItAnime = ({
 
   return (
     <>
-      {guid && <span className={className} style={style} id={guid}></span>}
+      {guid && (
+        <span
+          className={className}
+          style={style}
+          id={guid}
+          onClick={onClick}
+        ></span>
+      )}
       <style jsx>{`
         ${JSXStyles}
       `}</style>

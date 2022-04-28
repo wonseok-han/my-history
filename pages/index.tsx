@@ -1,7 +1,8 @@
+import { useEffect, useState } from "react";
+
 import Content from "components/Layout/Content";
 import { HISTORY_DATA } from "historyData";
 import Header from "components/Layout/Header";
-
 import dynamic from "next/dynamic";
 import { getRandomColor } from "utils/randomColor";
 import { makeGuid } from "utils/functions";
@@ -11,19 +12,23 @@ const Anime = dynamic(() => import("components/Anime"), {
 });
 
 const Home = () => {
-  const verticalColor = getRandomColor();
+  const [verticalColor, setVerticalColor] = useState("");
+
+  useEffect(() => {
+    setVerticalColor(getRandomColor());
+  }, []);
 
   return (
     <>
       <div className="background">
         <div className="container">
-          <Header />
+          <Header color={verticalColor} />
           <Content>
             <Anime
               className="anime-container"
               config={{
                 targets: "#vertical-bar",
-                height: "89%",
+                height: "87.5%",
                 easing: "easeInOutQuad",
                 duration: 3000,
               }}
@@ -54,7 +59,7 @@ const Home = () => {
                 <div
                   id="vertical-arrow"
                   style={{
-                    top: "9%",
+                    top: "11%",
                     left: "49.5%",
                     height: "0px",
                     position: "fixed",
@@ -85,16 +90,26 @@ const Home = () => {
                           className="history-box"
                           style={{
                             visibility: index % 2 === 0 ? "visible" : "hidden",
+                            borderColor: verticalColor,
                           }}
                         >
-                          <div className="history-box-divider">
+                          <div
+                            className="history-box-divider"
+                            style={{ borderColor: verticalColor }}
+                          >
                             <p
-                              style={{ fontWeight: "bold", fontSize: "1.5rem" }}
+                              style={{
+                                fontWeight: "bold",
+                                fontSize: "1.5rem",
+                              }}
                             >
                               {item.name}
                             </p>
                           </div>
-                          <div className="history-box-divider">
+                          <div
+                            className="history-box-divider"
+                            style={{ borderColor: verticalColor }}
+                          >
                             <p>{item.term}</p>
                             <p>{item.role}</p>
                             <p>{item.skill}</p>
@@ -125,16 +140,26 @@ const Home = () => {
                           className="history-box"
                           style={{
                             visibility: index % 2 !== 0 ? "visible" : "hidden",
+                            borderColor: verticalColor,
                           }}
                         >
-                          <div className="history-box-divider">
+                          <div
+                            className="history-box-divider"
+                            style={{ borderColor: verticalColor }}
+                          >
                             <p
-                              style={{ fontWeight: "bold", fontSize: "1.5rem" }}
+                              style={{
+                                fontWeight: "bold",
+                                fontSize: "1.5rem",
+                              }}
                             >
                               {item.name}
                             </p>
                           </div>
-                          <div className="history-box-divider">
+                          <div
+                            className="history-box-divider"
+                            style={{ borderColor: verticalColor }}
+                          >
                             <p>{item.term}</p>
                             <p>{item.role}</p>
                             <p>{item.skill}</p>
@@ -163,8 +188,8 @@ const Home = () => {
           display: flex;
           flex-direction: column;
           align-items: center;
-          margin-left: 4rem;
-          margin-right: 4rem;
+          margin-left: 6rem;
+          margin-right: 6rem;
           padding: 1.5rem;
           text-align: left;
           color: inherit;

@@ -1,7 +1,6 @@
 const titleColors = [
   "#ff0000",
   "#ffa500",
-  "#ffff00",
   "#008000",
   "#0000ff",
   "#4b0082",
