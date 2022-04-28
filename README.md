@@ -13,5 +13,15 @@ npm run dev
 yarn dev
 ```
 
+## Deploy
+```bash
+yarn build
+```
+
+```
+pm2 start yarn -w -i 0 --name "next" -- start
+sudo systemctl reload nginx
+```
+
 ## Reference
 [react-animejs-wrapper](https://github.com/DanielJDupont/react-animejs-wrapper)
