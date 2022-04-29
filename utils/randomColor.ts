@@ -7,5 +7,17 @@ const titleColors = [
   "#ee82ee",
 ];
 
-export const getRandomColor = () =>
-  titleColors[Math.floor(Math.random() * titleColors.length)];
+const badgeColors = [
+  "red",
+  "orange",
+  "yellow",
+  "lightGreen",
+  "cyan",
+  "lightBlue",
+  "violet",
+];
+
+export const getRandomColor = (type: "normal" | "badge" = "normal") =>
+  type === "badge"
+    ? badgeColors[Math.floor(Math.random() * badgeColors.length)]
+    : titleColors[Math.floor(Math.random() * titleColors.length)];

@@ -20,7 +20,12 @@ const Home = () => {
 
   return (
     <>
-      <div className="background">
+      <div
+        className="background"
+        style={{
+          backgroundColor: verticalColor,
+        }}
+      >
         <div className="container">
           <Header color={verticalColor} />
           <Content>
@@ -86,7 +91,23 @@ const Home = () => {
                           >
                             <p>{item.term}</p>
                             <p>{item.role}</p>
-                            <p>{item.skill}</p>
+                            <div style={{ display: "flex" }}>
+                              {item.skills.split(",").map((skill) => (
+                                <span
+                                  key={skill}
+                                  style={{
+                                    padding: "6px",
+                                    backgroundColor: getRandomColor("badge"),
+                                    borderRadius: "10px",
+                                    marginRight: "2px",
+                                    fontWeight: "bold",
+                                  }}
+                                >
+                                  {skill}
+                                </span>
+                              ))}
+                            </div>
+                            <p></p>
                           </div>
                         </div>
                       </Anime>
@@ -136,7 +157,23 @@ const Home = () => {
                           >
                             <p>{item.term}</p>
                             <p>{item.role}</p>
-                            <p>{item.skill}</p>
+                            <div style={{ display: "flex" }}>
+                              {item.skills.split(",").map((skill) => (
+                                <span
+                                  key={skill}
+                                  style={{
+                                    padding: "6px",
+                                    backgroundColor: getRandomColor("badge"),
+                                    borderRadius: "10px",
+                                    marginRight: "2px",
+                                    fontWeight: "bold",
+                                  }}
+                                >
+                                  {skill}
+                                </span>
+                              ))}
+                            </div>
+                            <p></p>
                           </div>
                         </div>
                       </Anime>
