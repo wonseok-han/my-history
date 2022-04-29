@@ -95,12 +95,9 @@ const Home = () => {
                               {item.skills.split(",").map((skill) => (
                                 <span
                                   key={skill}
+                                  className="badge"
                                   style={{
-                                    padding: "6px",
                                     backgroundColor: getRandomColor("badge"),
-                                    borderRadius: "10px",
-                                    marginRight: "2px",
-                                    fontWeight: "bold",
                                   }}
                                 >
                                   {skill}
@@ -161,12 +158,9 @@ const Home = () => {
                               {item.skills.split(",").map((skill) => (
                                 <span
                                   key={skill}
+                                  className="badge"
                                   style={{
-                                    padding: "6px",
                                     backgroundColor: getRandomColor("badge"),
-                                    borderRadius: "10px",
-                                    marginRight: "2px",
-                                    fontWeight: "bold",
                                   }}
                                 >
                                   {skill}
@@ -237,6 +231,12 @@ const Home = () => {
           border: 1px solid black;
           width: 100%;
           padding-left: 1rem;
+        }
+        .badge {
+          padding: 6px;
+          border-radius: 10px;
+          margin-right: 2px;
+          font-weight: bold;
         }
         `}
       </style>
