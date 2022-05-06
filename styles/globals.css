@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   height: 100%;
@@ -9,7 +13,7 @@ body {
 
 body {
   max-width: 100%;
-  width: 100%;
+  /* width: 100%; */
   margin: 0 auto;
 }
 

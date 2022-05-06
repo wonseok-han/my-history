@@ -1,18 +1,24 @@
 import { useEffect, useState } from "react";
 
 import TypeItAnime from "components/TypeIt";
-import { getRandomColor } from "utils/randomColor";
 
 interface HeaderProps {
   color?: string;
+  isMobile?: boolean;
+  onChangeColor?: () => void;
 }
 
-const Header = ({ color }: HeaderProps) => {
+const Header = ({ color, isMobile, onChangeColor }: HeaderProps) => {
   const [typeIt, setTypeIt] = useState<any>();
+  const [fontSize, setFontSize] = useState("");
+
+  useEffect(() => {
+    setFontSize(!isMobile ? "4rem" : "3rem");
+  }, [isMobile]);
 
   const JSXStyles = `
   .title {
-    font-size: 4rem;
+    font-size: ${fontSize};
     font-weight: 900;
     font-family: "Arial" fantasy;
     color: ${color};
@@ -38,6 +44,7 @@ const Header = ({ color }: HeaderProps) => {
   }, [typeIt]);
 
   const handleClick = () => {
+    onChangeColor?.();
     typeIt && typeIt.reset().go();
   };
 
@@ -46,13 +53,10 @@ const Header = ({ color }: HeaderProps) => {
       <TypeItAnime
         className="title"
         options={{
-          // afterStep: (instance: any) => {
-          //   instance.getElement().style.color = getRandomColor();
-          // },
           afterComplete: (instance: any) => {
             instance.destroy();
           },
-          cursor: true,
+          cursor: false,
           waitUntilVisible: true,
         }}
         JSXStyles={JSXStyles}

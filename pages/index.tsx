@@ -1,236 +1,170 @@
-import { useEffect, useState } from "react";
-
 import Content from "components/Layout/Content";
 import { HISTORY_DATA } from "historyData";
-import Header from "components/Layout/Header";
+
 import dynamic from "next/dynamic";
 import { getRandomColor } from "utils/randomColor";
 import { makeGuid } from "utils/functions";
+import Header from "components/Layout/Header";
 
 const Anime = dynamic(() => import("components/Anime"), {
   ssr: false,
 });
+interface HomeProps {
+  isMobile?: boolean;
+  themeColor?: string;
+  onChangeColor?: () => void;
+}
 
-const Home = () => {
-  const [verticalColor, setVerticalColor] = useState("");
-
-  useEffect(() => {
-    setVerticalColor(getRandomColor());
-  }, []);
-
+const Home = ({ isMobile, themeColor, onChangeColor }: HomeProps) => {
   return (
-    <>
+    <div className="page-container">
       <div
-        className="background"
         style={{
-          backgroundColor: verticalColor,
+          width: "100%",
+          textAlign: "center",
         }}
       >
-        <div className="container">
-          <Header color={verticalColor} />
-          <Content>
-            <Anime
-              className="anime-container"
-              config={{
-                targets: "#vertical-bar",
-                height: "87.5%",
-                easing: "easeInOutQuad",
-                duration: 3000,
-              }}
-            >
-              <div
-                id="vertical-bar"
-                style={{
-                  left: "49.5%",
-                  width: "10px",
-                  height: "0px",
-                  backgroundColor: verticalColor,
-                  position: "fixed",
-                  borderRadius: "10px",
-                }}
-              />
-
-              <div>
-                {HISTORY_DATA.map((item, index) => {
-                  const guid = makeGuid();
-
-                  return (
-                    <div key={index}>
-                      <Anime
-                        config={{
-                          targets: `#${guid}`,
-                          opacity: 1,
-                          easing: "easeInOutQuad",
-                          delay: () => index * 500,
-                        }}
-                      >
-                        <div
-                          id={guid}
-                          className="history-box"
-                          style={{
-                            visibility: index % 2 === 0 ? "visible" : "hidden",
-                            borderColor: verticalColor,
-                          }}
-                        >
-                          <div
-                            className="history-box-divider"
-                            style={{ borderColor: verticalColor }}
-                          >
-                            <p
-                              style={{
-                                fontWeight: "bold",
-                                fontSize: "1.5rem",
-                              }}
-                            >
-                              {item.name}
-                            </p>
-                          </div>
-                          <div
-                            className="history-box-divider"
-                            style={{ borderColor: verticalColor }}
-                          >
-                            <p>{item.term}</p>
-                            <p>{item.role}</p>
-                            <div style={{ display: "flex" }}>
-                              {item.skills.split(",").map((skill) => (
-                                <span
-                                  key={skill}
-                                  className="badge"
-                                  style={{
-                                    backgroundColor: getRandomColor("badge"),
-                                  }}
-                                >
-                                  {skill}
-                                </span>
-                              ))}
-                            </div>
-                            <p></p>
-                          </div>
-                        </div>
-                      </Anime>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div>
-                {HISTORY_DATA.map((item, index) => {
-                  const guid = makeGuid();
-
-                  return (
-                    <div key={index}>
-                      <Anime
-                        config={{
-                          targets: `#${guid}`,
-                          opacity: 1,
-                          easing: "easeInOutQuad",
-                          delay: () => index * 500,
-                        }}
-                      >
-                        <div
-                          id={guid}
-                          className="history-box"
-                          style={{
-                            visibility: index % 2 !== 0 ? "visible" : "hidden",
-                            borderColor: verticalColor,
-                          }}
-                        >
-                          <div
-                            className="history-box-divider"
-                            style={{ borderColor: verticalColor }}
-                          >
-                            <p
-                              style={{
-                                fontWeight: "bold",
-                                fontSize: "1.5rem",
-                              }}
-                            >
-                              {item.name}
-                            </p>
-                          </div>
-                          <div
-                            className="history-box-divider"
-                            style={{ borderColor: verticalColor }}
-                          >
-                            <p>{item.term}</p>
-                            <p>{item.role}</p>
-                            <div style={{ display: "flex" }}>
-                              {item.skills.split(",").map((skill) => (
-                                <span
-                                  key={skill}
-                                  className="badge"
-                                  style={{
-                                    backgroundColor: getRandomColor("badge"),
-                                  }}
-                                >
-                                  {skill}
-                                </span>
-                              ))}
-                            </div>
-                            <p></p>
-                          </div>
-                        </div>
-                      </Anime>
-                    </div>
-                  );
-                })}
-              </div>
-            </Anime>
-          </Content>
-        </div>
+        <Header
+          color={themeColor}
+          isMobile={isMobile}
+          onChangeColor={onChangeColor}
+        />
       </div>
+      <Content>
+        <Anime
+          className="anime-container"
+          config={{
+            targets: "#vertical-bar",
+            height: "100%",
+            easing: "easeInOutQuad",
+            duration: 3000,
+          }}
+        >
+          <div
+            id="vertical-bar"
+            style={{
+              left: "49.5%",
+              width: "10px",
+              height: "0%",
+              backgroundColor: themeColor,
+              position: "fixed",
+              borderRadius: "10px",
+            }}
+          />
+          <div
+            className="history-area"
+            style={{
+              gridTemplateColumns: `${isMobile ? "1fr" : "1fr 1fr"}`,
+            }}
+          >
+            {HISTORY_DATA.map((item, index) => {
+              const guid = makeGuid();
 
-      <style>
-        {`
-        .background {
-          background-color: #2D333B;
+              return (
+                <div key={index}>
+                  <Anime
+                    config={{
+                      targets: `#${guid}`,
+                      opacity: 1,
+                      easing: "easeInOutQuad",
+                      delay: () => index * 500,
+                    }}
+                  >
+                    <div
+                      id={guid}
+                      className="history-box"
+                      style={{
+                        marginTop: `${
+                          !isMobile
+                            ? index % 2 === 0
+                              ? "0"
+                              : "45%"
+                            : index !== 0
+                            ? "10%"
+                            : "0"
+                        }`,
+                      }}
+                    >
+                      <div className="history-box-divider">
+                        <p
+                          style={{
+                            fontWeight: "bold",
+                            fontSize: "1.5rem",
+                          }}
+                        >
+                          {item.name}
+                        </p>
+                      </div>
+                      <div className="history-box-divider">
+                        <p>{item.term}</p>
+                        <p>{item.role}</p>
+                        <div style={{ display: "flex" }}>
+                          {item.skills.split(",").map((skill) => (
+                            <span
+                              key={skill}
+                              className="badge"
+                              style={{
+                                backgroundColor: getRandomColor("badge"),
+                              }}
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                        <p></p>
+                      </div>
+                    </div>
+                  </Anime>
+                </div>
+              );
+            })}
+          </div>
+        </Anime>
+      </Content>
+
+      <style jsx>{`
+        .page-container {
+          display: grid;
           height: 100%;
-          overflow: auto;
-        }
-        .container {
-          height: 100%;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          margin-left: 6rem;
-          margin-right: 6rem;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          background-color: #E6E6E6;
+          grid-template-rows: auto auto;
         }
         .anime-container {
           width: 100%;
           height: 100%;
           text-align: left;
+          overflow: auto;
+        }
+        .history-area {
+          height: 100%;
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 2em;
         }
         .history-box {
           cursor: pointer;
           opacity: 0;
           width: 99%;
           height: 100%;
-          border: 2px solid black;
-          margin-bottom: 3rem;
+          border: 2px solid;
+
           box-shadow: 5px 5px 10px black;
           background-color: white;
           transform: scale(0.9);
+          border-color: ${themeColor};
         }
         .history-box:hover {
           transform: scale(1);
-          transition: .5s;
+          transition: 0.5s;
           overflow: hidden;
         }
         .history-box-divider {
-          border: 1px solid black;
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 10px;
+          border: 1px solid;
           width: 100%;
           padding-left: 1rem;
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+          border-color: ${themeColor};
         }
         .badge {
           padding: 6px;
@@ -238,9 +172,8 @@ const Home = () => {
           margin-right: 2px;
           font-weight: bold;
         }
-        `}
-      </style>
-    </>
+      `}</style>
+    </div>
   );
 };
 
