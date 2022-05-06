@@ -13,7 +13,7 @@ const Header = ({ color, isMobile, onChangeColor }: HeaderProps) => {
   const [fontSize, setFontSize] = useState("");
 
   useEffect(() => {
-    setFontSize(!isMobile ? "4rem" : "3rem");
+    setFontSize(!isMobile ? "4rem" : "2.5rem");
   }, [isMobile]);
 
   const JSXStyles = `

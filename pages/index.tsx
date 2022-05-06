@@ -78,7 +78,7 @@ const Home = ({ isMobile, themeColor, onChangeColor }: HomeProps) => {
                           !isMobile
                             ? index % 2 === 0
                               ? "0"
-                              : "45%"
+                              : "30%"
                             : index !== 0
                             ? "10%"
                             : "0"
