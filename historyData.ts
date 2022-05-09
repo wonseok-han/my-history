@@ -79,8 +79,15 @@ export const HISTORY_DATA = [
   {
     key: "11",
     name: "부산상수도 차세대 경영지원정보시스템",
-    term: "2021. 08. ~ 2021. 03.(8개월)",
+    term: "2021. 08. ~ 2022. 03.(8개월)",
     role: "수질, 자산 파트 개발",
     skills: "Websquare, eGovFramework, Oracle, Crownix Report",
+  },
+  {
+    key: "12",
+    name: "CLT 터미널운영시스템",
+    term: "2022. 04. ~ ",
+    role: "컨테이너운영 화면 개발",
+    skills: "React, SpringBoot, Flex, Spring, Oracle",
   },
 ];
