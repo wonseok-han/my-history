@@ -39,13 +39,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         div#__next > div {
           height: 100%;
           overflow: hidden;
+          background-color: #22272e;
         }
       `}</style>
       <style jsx>{`
         .card-container {
-          border: 1px solid #eaeaea;
+          border: 1px solid #444c56;
           border-radius: 10px;
-          background-color: #e6e6e6;
+          background-color: #22272e;
         }
       `}</style>
     </>

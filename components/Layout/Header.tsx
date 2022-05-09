@@ -50,19 +50,25 @@ const Header = ({ color, isMobile, onChangeColor }: HeaderProps) => {
 
   return (
     <>
-      <TypeItAnime
-        className="title"
-        options={{
-          afterComplete: (instance: any) => {
-            instance.destroy();
-          },
-          cursor: false,
-          waitUntilVisible: true,
+      <div
+        style={{
+          backgroundColor: "#2d333b",
         }}
-        JSXStyles={JSXStyles}
-        handleTypeItInstance={handleTypeItInstance}
-        onClick={handleClick}
-      />
+      >
+        <TypeItAnime
+          className="title"
+          options={{
+            afterComplete: (instance: any) => {
+              instance.destroy();
+            },
+            cursor: false,
+            waitUntilVisible: true,
+          }}
+          JSXStyles={JSXStyles}
+          handleTypeItInstance={handleTypeItInstance}
+          onClick={handleClick}
+        />
+      </div>
     </>
   );
 };

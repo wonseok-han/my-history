@@ -57,7 +57,7 @@ const Home = ({ isMobile, themeColor, onChangeColor }: HomeProps) => {
               gridTemplateColumns: `${isMobile ? "1fr" : "1fr 1fr"}`,
             }}
           >
-            {HISTORY_DATA.map((item, index) => {
+            {[...HISTORY_DATA].reverse().map((item, index) => {
               const guid = makeGuid();
 
               return (
@@ -90,6 +90,7 @@ const Home = ({ isMobile, themeColor, onChangeColor }: HomeProps) => {
                           style={{
                             fontWeight: "bold",
                             fontSize: "1.5rem",
+                            color: "rgba(205, 217, 229, 0.7)",
                           }}
                         >
                           {item.name}
@@ -127,6 +128,7 @@ const Home = ({ isMobile, themeColor, onChangeColor }: HomeProps) => {
           display: grid;
           height: 100%;
           grid-template-rows: auto auto;
+          background-color: #22272e;
         }
         .anime-container {
           width: 100%;
@@ -144,11 +146,11 @@ const Home = ({ isMobile, themeColor, onChangeColor }: HomeProps) => {
           width: 99%;
           height: 100%;
           border: 2px solid;
-
-          box-shadow: 5px 5px 10px black;
-          background-color: white;
+          box-shadow: 5px 5px 8px ${themeColor};
+          background-color: #2d333b;
           transform: scale(0.9);
           border-color: ${themeColor};
+          border-radius: 5px;
         }
         .history-box:hover {
           transform: scale(1);
@@ -165,12 +167,17 @@ const Home = ({ isMobile, themeColor, onChangeColor }: HomeProps) => {
           padding-top: 1rem;
           padding-bottom: 1rem;
           border-color: ${themeColor};
+          color: #768390;
+        }
+        .history-box-divider > p {
+          font-weight: bold;
         }
         .badge {
           padding: 6px;
           border-radius: 10px;
           margin-right: 2px;
           font-weight: bold;
+          color: black;
         }
       `}</style>
     </div>
